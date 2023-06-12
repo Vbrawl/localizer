@@ -6,12 +6,12 @@ class LanguagePack:
     def __init__(self):
         self.o_t:dict[str, str] = dict()                            # original: translated
         self.new_texts:set[str] = set()
-        self.supported_file_types:dict[str, FileHandler] = dict()   # extension: FileHandler
+        self.supported_file_types:dict[str, type[FileHandler]] = dict()   # extension: FileHandler
 
         for ext, fhandler in FILE_TYPES.items():
-            self.set_file_extension(ext, fhandler())
+            self.set_file_extension(ext, fhandler)
 
-    def set_file_extension(self, extension:str, fhandler:FileHandler):
+    def set_file_extension(self, extension:str, fhandler:type[FileHandler]):
         if not extension.startswith('.'):
             extension = '.' + extension
         self.supported_file_types[extension] = fhandler
