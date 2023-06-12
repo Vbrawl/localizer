@@ -1,5 +1,6 @@
-from typing import Callable, Optional
-from localizer.FileHandler import FileHandler #TODO: Add full path
+from typing import Optional
+from localizer.FileHandler import FileHandler
+from localizer.supported_file_types import FILE_TYPES
 
 class LanguagePack:
     def __init__(self):
@@ -7,10 +8,8 @@ class LanguagePack:
         self.new_texts:set[str] = set()
         self.supported_file_types:dict[str, FileHandler] = dict()   # extension: FileHandler
 
-        #from localizer.src.supported_file_types import dot_csv, dot_json
-        from supported_file_types import dot_csv, dot_json
-        self.set_file_extension('.csv', dot_csv.FHandler())
-        self.set_file_extension('.json', dot_json.FHandler())
+        for ext, fhandler in FILE_TYPES.items():
+            self.set_file_extension(ext, fhandler())
 
     def set_file_extension(self, extension:str, fhandler:FileHandler):
         if not extension.startswith('.'):
