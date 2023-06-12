@@ -6,7 +6,7 @@ class FHandler(FileHandler):
     def parse(file:str) -> dict[str, str] | set[str]:
         o_t = {}
         cast_to_set = True
-        with open(file, 'r', newline='') as f:
+        with open(file, 'r', newline='', encoding="utf-8") as f:
             csv_reader = csv.reader(f)
             for row in csv_reader:
                 cr = len(row) # count row (column number)
@@ -24,7 +24,7 @@ class FHandler(FileHandler):
 
     @staticmethod
     def export(file:str, texts:dict[str, str] | set[str]) -> None:
-        with open(file, 'w', newline='') as f:
+        with open(file, 'w', newline='', encoding="utf-8") as f:
             csv_writer = csv.writer(f)
             if isinstance(texts, dict):
                 header = ('[LP:IGNORE] ORIGINAL', 'TRANSLATED')
