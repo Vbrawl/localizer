@@ -4,7 +4,6 @@ from localizer.language_pack import LanguagePack
 
 REMOVE_GENERATED_FILES = True
 
-
 class TestLanguagePack(unittest.TestCase):
     def test_export_parse(self):
         lp = LanguagePack()
@@ -19,7 +18,7 @@ class TestLanguagePack(unittest.TestCase):
 
         if REMOVE_GENERATED_FILES: os.unlink(file)
 
-        self.assertEqual(lp.gettext("Hello World"), lp2.gettext("Hello World"))
+        self.assertEqual(lp2.gettext("Hello World"), "Γειά σου Κόσμε")
 
 
 if __name__ == "__main__":
