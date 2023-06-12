@@ -21,7 +21,8 @@ class LanguagePack:
             if file.endswith(extension):
                 new_texts_file = file[:-len(extension)]+'.new_text'+extension
                 fhandler.export(file, self.o_t)
-                fhandler.export(new_texts_file, self.new_texts)
+                if self.new_texts: # is not empty:
+                    fhandler.export(new_texts_file, self.new_texts)
 
     def parse_file(self, file:str) -> None:
         o_t:Optional[dict[str, str]] = None
