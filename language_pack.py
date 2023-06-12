@@ -1,5 +1,5 @@
 from typing import Callable, Optional
-from FileHandler import FileHandler #TODO: Add full path
+from localizer.FileHandler import FileHandler #TODO: Add full path
 
 class LanguagePack:
     def __init__(self):

@@ -1,6 +1,7 @@
 import json
+from localizer.FileHandler import FileHandler
 
-class FHandler():#FileHandler):
+class FHandler(FileHandler):
     @staticmethod
     def parse(file:str) -> dict[str, str]:
         with open(file, 'r') as f:

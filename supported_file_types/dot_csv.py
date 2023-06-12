@@ -1,6 +1,7 @@
 import csv
+from localizer.FileHandler import FileHandler
 
-def FHandler():#FileHandler):
+class FHandler(FileHandler):
     @staticmethod
     def parse(file:str) -> dict[str, str]:
         o_t = {}
