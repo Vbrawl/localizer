@@ -1,1 +1,1 @@
-from localizer.print_replace import print, PRINT_LANGUAGE_PACK
+from localizer.print_replace import print, input, GLOBAL_LANGUAGE_PACK
