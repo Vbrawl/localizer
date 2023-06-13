@@ -2,8 +2,9 @@ import sys
 from typing import Optional, IO
 from localizer.language_pack import LanguagePack
 
-PRINT_LANGUAGE_PACK = LanguagePack() # An empty language pack to avoid errors.
+GLOBAL_LANGUAGE_PACK = LanguagePack() # An empty language pack to avoid errors.
 
+_print=print
 def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', file:Optional[IO] = None, flush:bool = False) -> None:
     """An emulated version of the default `print`.
     Allows `localizer` module to intercept the values passed to `print`
@@ -28,11 +29,15 @@ def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', fi
         raise TypeError(generate_error_message("sep", sep))
     elif sep is None:
         sep = ' '
+    else: # sep is str
+        sep = GLOBAL_LANGUAGE_PACK.gettext(sep)
 
     if not isinstance(end, str) and end is not None:
         raise TypeError(generate_error_message("end", end))
     elif end is None:
         end = '\n'
+    else: # end is str
+        end = GLOBAL_LANGUAGE_PACK.gettext(end)
 
     if file is None:
         file = sys.stdout
@@ -42,7 +47,7 @@ def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', fi
         if i != 0:
             file.write(sep)
         if isinstance(v, str):
-            v = PRINT_LANGUAGE_PACK.gettext(v)
+            v = GLOBAL_LANGUAGE_PACK.gettext(v)
         else:
             v = str(v)
         file.write(v)
@@ -50,3 +55,10 @@ def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', fi
 
     if flush:
         file.flush()
+
+
+_input=input
+def input(_prompt:object = "") -> str:
+    if isinstance(_prompt, str):
+        _prompt = GLOBAL_LANGUAGE_PACK.gettext(_prompt)
+    return _input(_prompt)
