@@ -38,6 +38,7 @@ class LanguagePack:
                 fhandler.export(file, self.o_t)
                 if self.new_texts: # is not empty:
                     fhandler.export(new_texts_file, self.new_texts)
+                return # Return as soon as you export the file(s)
 
     def parse_file(self, file:str) -> None:
         """Parses the data of `file` and stores them in the language pack.
@@ -55,6 +56,7 @@ class LanguagePack:
                 x = fhandler.parse(file)
                 if isinstance(x, dict):
                     o_t = x
+                break # Continue as soon as you process the file(s)
         if o_t is None:
             raise TypeError("File must end with one of the following extensions: " + ', '.join(self.supported_file_types.keys()))
 
