@@ -50,22 +50,25 @@ class LanguagePack:
         Raises:
             TypeError: If there is no handler available to process this file.
         """
-        o_t:Optional[dict[str, str]] = None
+        o_t:Optional[dict[str, str] | set[str]] = None
         for extension, fhandler in self.supported_file_types.items():
             if file.endswith(extension):
-                x = fhandler.parse(file)
-                if isinstance(x, dict):
-                    o_t = x
+                o_t = fhandler.parse(file)
                 break # Continue as soon as you process the file(s)
         if o_t is None:
             raise TypeError("File must end with one of the following extensions: " + ', '.join(self.supported_file_types.keys()))
 
-        for o, t in o_t.items():
-            self.o_t[o] = t
-            try:
-                self.new_texts.remove(o)
-            except KeyError:
-                pass # o doesn't exist to begin with.
+        if isinstance(o_t, dict):
+            for o, t in o_t.items():
+                self.o_t[o] = t
+                try:
+                    self.new_texts.remove(o)
+                except KeyError:
+                    pass # o doesn't exist to begin with.
+        else:
+            for o in o_t:
+                if o not in self.o_t.keys():
+                    self.new_texts.add(o)
     
     def add_translation(self, original:str, translated:str) -> None:
         """Add a translation for a sentence in the language pack.
@@ -75,6 +78,8 @@ class LanguagePack:
             translated (str): The translated sentence.
         """
         self.o_t[original] = translated
+        if original in self.new_texts:
+            self.new_texts.remove(original)
     
     def gettext(self, text:str) -> str:
         """Get the translation of `text` if it exists,
