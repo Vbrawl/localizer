@@ -1,41 +1,206 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="localizer.supported_file_types package" href="localizer.supported_file_types.html" /><link rel="prev" title="localizer" href="modules.html" />
 
-<!DOCTYPE html>
+    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+        <title>localizer package - Localizer 1.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>localizer package &#8212; Localizer 1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="localizer.supported_file_types package" href="localizer.supported_file_types.html" />
-    <link rel="prev" title="localizer" href="modules.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Localizer 1.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
+  <span class="sidebar-brand-text">Localizer 1.1 documentation</span>
   
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">localizer</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">localizer package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="localizer.supported_file_types.html">localizer.supported_file_types package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
           
-
-          <div class="body" role="main">
-            
-  <section id="localizer-package">
-<h1>localizer package<a class="headerlink" href="#localizer-package" title="Permalink to this heading">¶</a></h1>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="localizer-package">
+<h1>localizer package<a class="headerlink" href="#localizer-package" title="Permalink to this heading">#</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="localizer.supported_file_types.html">localizer.supported_file_types package</a><ul>
@@ -63,21 +228,21 @@
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="module-localizer.FileHandler">
-<span id="localizer-filehandler-module"></span><h2>localizer.FileHandler module<a class="headerlink" href="#module-localizer.FileHandler" title="Permalink to this heading">¶</a></h2>
+<span id="localizer-filehandler-module"></span><h2>localizer.FileHandler module<a class="headerlink" href="#module-localizer.FileHandler" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="localizer.FileHandler.FileHandler">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">localizer.FileHandler.</span></span><span class="sig-name descname"><span class="pre">FileHandler</span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">localizer.FileHandler.</span></span><span class="sig-name descname"><span class="pre">FileHandler</span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.FileHandler.FileHandler.export">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler.export" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler.export" title="Permalink to this definition">#</a></dt>
 <dd><p>A function to export the <cite>texts</cite> to a file.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file (str): The filepath/filename to the file which will hold the data. (The file is created if it doesn’t exist).
-texts (dict[str, str] | set[str]): A dictionary with key: value pairs where key is the <cite>original text</cite> and value is the <cite>translated text</cite>, or a set where each value is an <cite>original text</cite> where there is no translation for it.</p>
+<dl>
+<dt>Args:</dt><dd><p>file (str): The filepath/filename to the file which will hold the data. (The file is created if it doesn’t exist).</p>
+<p>texts (dict[str, str] | set[str]): A dictionary with key: value pairs where key is the <cite>original text</cite> and value is the <cite>translated text</cite>, or a set where each value is an <cite>original text</cite> where there is no translation for it.</p>
 </dd>
 <dt>Raises:</dt><dd><p>NotImplementedError: This is always raised when calling FileHandle.export, you should call the <cite>export</cite> method of the child classes.</p>
 </dd>
@@ -86,7 +251,7 @@ texts (dict[str, str] | set[str]): A dictionary with key: value pairs where key 
 
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.FileHandler.FileHandler.parse">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler.parse" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/localizer/FileHandler.html#FileHandler.parse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.FileHandler.FileHandler.parse" title="Permalink to this definition">#</a></dt>
 <dd><p>A function to parse a file and extract it’s data.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>file (str): The filepath/filename of the file to process.</p>
@@ -102,25 +267,26 @@ texts (dict[str, str] | set[str]): A dictionary with key: value pairs where key 
 
 </section>
 <section id="module-localizer.language_pack">
-<span id="localizer-language-pack-module"></span><h2>localizer.language_pack module<a class="headerlink" href="#module-localizer.language_pack" title="Permalink to this heading">¶</a></h2>
+<span id="localizer-language-pack-module"></span><h2>localizer.language_pack module<a class="headerlink" href="#module-localizer.language_pack" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">localizer.language_pack.</span></span><span class="sig-name descname"><span class="pre">LanguagePack</span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">localizer.language_pack.</span></span><span class="sig-name descname"><span class="pre">LanguagePack</span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.add_translation">
-<span class="sig-name descname"><span class="pre">add_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.add_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.add_translation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a translation for a sentence in the language pack.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>original (str): The original sentence.
-translated (str): The translated sentence.</p>
+<span class="sig-name descname"><span class="pre">add_translation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translated</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.add_translation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.add_translation" title="Permalink to this definition">#</a></dt>
+<dd><p>Add a translation for a sentence in the language pack.
+If the translated text is empty, original is added to new_texts.</p>
+<dl>
+<dt>Args:</dt><dd><p>original (str): The original sentence.</p>
+<p>translated (str): The translated sentence. Defaults to ‘’</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.export_file">
-<span class="sig-name descname"><span class="pre">export_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.export_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.export_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">export_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.export_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.export_file" title="Permalink to this definition">#</a></dt>
 <dd><p>Exports the data of the language pack to the specified <cite>file</cite>.
 The data is processed and stored using the <cite>FileHandler</cite> for the specific file format.</p>
 <dl class="simple">
@@ -130,8 +296,20 @@ The data is processed and stored using the <cite>FileHandler</cite> for the spec
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.get_file_extension">
+<span class="sig-name descname"><span class="pre">get_file_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.get_file_extension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.get_file_extension" title="Permalink to this definition">#</a></dt>
+<dd><p>Finds and returns the extension of the file ONLY if that extension is supported.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filename (str): The name of the file.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Optional[str]: The extension of the file (if the extension is supported), or None (if the extension is NOT supported).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.gettext">
-<span class="sig-name descname"><span class="pre">gettext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.gettext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.gettext" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">gettext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.gettext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.gettext" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the translation of <cite>text</cite> if it exists,
 otherwise fallback to the original translation.</p>
 <dl class="simple">
@@ -144,7 +322,7 @@ otherwise fallback to the original translation.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.parse_file">
-<span class="sig-name descname"><span class="pre">parse_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.parse_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.parse_file" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">parse_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.parse_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.parse_file" title="Permalink to this definition">#</a></dt>
 <dd><p>Parses the data of <cite>file</cite> and stores them in the language pack.
 The data is processed and stored using the <cite>FileHandler</cite> for the specific file format.</p>
 <dl class="simple">
@@ -157,12 +335,12 @@ The data is processed and stored using the <cite>FileHandler</cite> for the spec
 
 <dl class="py method">
 <dt class="sig sig-object py" id="localizer.language_pack.LanguagePack.set_file_extension">
-<span class="sig-name descname"><span class="pre">set_file_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fhandler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#localizer.FileHandler.FileHandler" title="localizer.FileHandler.FileHandler"><span class="pre">localizer.FileHandler.FileHandler</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.set_file_extension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.set_file_extension" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_file_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fhandler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">type</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#localizer.FileHandler.FileHandler" title="localizer.FileHandler.FileHandler"><span class="pre">localizer.FileHandler.FileHandler</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/localizer/language_pack.html#LanguagePack.set_file_extension"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.language_pack.LanguagePack.set_file_extension" title="Permalink to this definition">#</a></dt>
 <dd><p>Creates a connection between the specified <cite>extension</cite> and the specified <cite>FileHandler</cite>
 which allows to later process files of that extension with the correct <cite>FileHandler</cite>.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>extension (str): The extension of the file that the Handler can process (Example, .json, .csv).
-fhandler (type[FileHandler]): A reference to the class holding the static methods for parsing and exporting the files.</p>
+<dl>
+<dt>Args:</dt><dd><p>extension (str): The extension of the file that the Handler can process (Example, .json, .csv).</p>
+<p>fhandler (type[FileHandler]): A reference to the class holding the static methods for parsing and exporting the files.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -171,130 +349,143 @@ fhandler (type[FileHandler]): A reference to the class holding the static method
 
 </section>
 <section id="module-localizer.print_replace">
-<span id="localizer-print-replace-module"></span><h2>localizer.print_replace module<a class="headerlink" href="#module-localizer.print_replace" title="Permalink to this heading">¶</a></h2>
+<span id="localizer-print-replace-module"></span><h2>localizer.print_replace module<a class="headerlink" href="#module-localizer.print_replace" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="localizer.print_replace.input">
+<span class="sig-prename descclassname"><span class="pre">localizer.print_replace.</span></span><span class="sig-name descname"><span class="pre">input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_prompt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/localizer/print_replace.html#input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.print_replace.input" title="Permalink to this definition">#</a></dt>
+<dd><p>An emulated version of the default <cite>input</cite>.
+Allows <cite>localizer</cite> to intercept the <cite>_prompt</cite> and provide
+an easy way to translate it to different languages.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>_prompt (object, optional): Any object that implements <cite>repr</cite> or <cite>str</cite>. Defaults to “”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: A string that’s typed to the console (the string is read by the default input function).</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="localizer.print_replace.print">
-<span class="sig-prename descclassname"><span class="pre">localizer.print_replace.</span></span><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/print_replace.html#print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.print_replace.print" title="Permalink to this definition">¶</a></dt>
-<dd><dl>
-<dt>An emulated version of the default <cite>print</cite>.</dt><dd><p>Allows <cite>localizer</cite> module to intercept the values passed to <cite>print</cite>
+<span class="sig-prename descclassname"><span class="pre">localizer.print_replace.</span></span><span class="sig-name descname"><span class="pre">print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">IO</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flush</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/localizer/print_replace.html#print"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#localizer.print_replace.print" title="Permalink to this definition">#</a></dt>
+<dd><p>An emulated version of the default <cite>print</cite>.
+Allows <cite>localizer</cite> module to intercept the values passed to <cite>print</cite>
 and provide an easy way to translate them to different languages.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>sep (Optional[str], optional): The separator, a value that’s placed between the values. Defaults to ‘ ‘.
-end (Optional[str], optional): The ending value, a value that’s placed at the end of the whole value list. Defaults to ‘</p>
+<dl>
+<dt>Args:</dt><dd><p>sep (Optional[str], optional): The separator, a value that’s placed between the values. Defaults to ‘ ‘.</p>
+<p>end (Optional[str], optional): The ending value, a value that’s placed at the end of the whole value list. Defaults to ‘\n’.</p>
+<p>file (Optional[IO], optional): The file object in which to write the buffer, None is replaced with STDOUT. Defaults to None.</p>
+<p>flush (bool, optional): Wether to flush the buffer or not. Defaults to False.</p>
 </dd>
-</dl>
-</dd>
-<dt>‘.</dt><dd><blockquote>
-<div><p>file (Optional[IO], optional): The file object in which to write the buffer, None is replaced with STDOUT. Defaults to None.
-flush (bool, optional): Wether to flush the buffer or not. Defaults to False.</p>
-</div></blockquote>
-<dl class="simple">
 <dt>Raises:</dt><dd><p>TypeError: If <cite>sep</cite> is not of type <cite>str</cite> and not <cite>None</cite>.
 TypeError: If <cite>end</cite> is not of type <cite>str</cite> and not None.</p>
-</dd>
-</dl>
 </dd>
 </dl>
 </dd></dl>
 
 </section>
 <section id="module-localizer">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-localizer" title="Permalink to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-localizer" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="localizer.supported_file_types.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">localizer.supported_file_types package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="modules.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">localizer</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Vbrawl
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">localizer package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-localizer.FileHandler">localizer.FileHandler module</a><ul>
+<li><a class="reference internal" href="#localizer.FileHandler.FileHandler"><code class="docutils literal notranslate"><span class="pre">FileHandler</span></code></a><ul>
+<li><a class="reference internal" href="#localizer.FileHandler.FileHandler.export"><code class="docutils literal notranslate"><span class="pre">FileHandler.export()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.FileHandler.FileHandler.parse"><code class="docutils literal notranslate"><span class="pre">FileHandler.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-localizer.language_pack">localizer.language_pack module</a><ul>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack"><code class="docutils literal notranslate"><span class="pre">LanguagePack</span></code></a><ul>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.add_translation"><code class="docutils literal notranslate"><span class="pre">LanguagePack.add_translation()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.export_file"><code class="docutils literal notranslate"><span class="pre">LanguagePack.export_file()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.get_file_extension"><code class="docutils literal notranslate"><span class="pre">LanguagePack.get_file_extension()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.gettext"><code class="docutils literal notranslate"><span class="pre">LanguagePack.gettext()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.parse_file"><code class="docutils literal notranslate"><span class="pre">LanguagePack.parse_file()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.language_pack.LanguagePack.set_file_extension"><code class="docutils literal notranslate"><span class="pre">LanguagePack.set_file_extension()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-localizer.print_replace">localizer.print_replace module</a><ul>
+<li><a class="reference internal" href="#localizer.print_replace.input"><code class="docutils literal notranslate"><span class="pre">input()</span></code></a></li>
+<li><a class="reference internal" href="#localizer.print_replace.print"><code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-localizer">Module contents</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
-          
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Localizer</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="modules.html">localizer</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">localizer package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="localizer.supported_file_types.html">localizer.supported_file_types package</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-localizer.FileHandler">localizer.FileHandler module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#localizer.FileHandler.FileHandler"><code class="docutils literal notranslate"><span class="pre">FileHandler</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-localizer.language_pack">localizer.language_pack module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#localizer.language_pack.LanguagePack"><code class="docutils literal notranslate"><span class="pre">LanguagePack</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-localizer.print_replace">localizer.print_replace module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#localizer.print_replace.print"><code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#module-localizer">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="modules.html">localizer</a><ul>
-      <li>Previous: <a href="modules.html" title="previous chapter">localizer</a></li>
-      <li>Next: <a href="localizer.supported_file_types.html" title="next chapter">localizer.supported_file_types package</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2023, Vbrawl.
       
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
-      |
-      <a href="_sources/localizer.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
 </html>
