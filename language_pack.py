@@ -20,7 +20,7 @@ class LanguagePack:
         self.translate_to_language = "en"
         self.translators = ["deepl", "google", "bing"]
         self.translator_tries = 5
-        self.auto_translate = True
+        self.auto_translate = False
 
         for ext, fhandler in FILE_TYPES.items():
             self.set_file_extension(ext, fhandler)
@@ -154,6 +154,9 @@ class LanguagePack:
     def add_translation(self, original:str, translated:Optional[str] = None) -> None:
         """Add a translation for a sentence in the language pack.
         If the translated text is empty, original is added to new_texts.
+
+        If `self.auto_translate` is True, an attempt to automatically translate
+        the original using a translator API is made.
 
         Args:
             original (str): The original sentence.
