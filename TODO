@@ -1,4 +1,3 @@
-[ ] Add errors when parsing or exporting doesn't have a correct handler.
 [ ] Add auto translate in the language pack. (Asynchronously!)
 [ ] Add documentation in input function.
 [ ] Add test cases for input function.
