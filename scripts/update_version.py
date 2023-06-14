@@ -18,9 +18,11 @@ def get_line_and_value(fname, keyName):
                 return i, values
     return None, None
 
+TOML_PATH = "../pyproject.toml"
+SPHINX_PATH = "../documentation/source/conf.py"
 
-tomlLine, tomlVersion = get_line_and_value("pyproject.toml", "version")
-sphinxLine, sphinxVersion = get_line_and_value("documentation/source/conf.py", "release")
+tomlLine, tomlVersion = get_line_and_value(TOML_PATH, "version")
+sphinxLine, sphinxVersion = get_line_and_value(SPHINX_PATH, "release")
 
 if tomlLine is None or sphinxLine is None or tomlVersion is None or sphinxVersion is None:
     exit()
@@ -36,5 +38,5 @@ if tomlVersion == sphinxVersion: # If version was NOT manually updated.
             break
 resultVersion = '.'.join(map(lambda x: str(x), resultVersion))
 
-update_value("pyproject.toml", tomlLine, resultVersion)
-update_value("documentation/source/conf.py", sphinxLine, resultVersion)
+update_value(TOML_PATH, tomlLine, resultVersion)
+update_value(SPHINX_PATH, sphinxLine, resultVersion)
