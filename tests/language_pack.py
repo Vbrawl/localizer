@@ -19,6 +19,16 @@ class TestLanguagePack(unittest.TestCase):
         if REMOVE_GENERATED_FILES: os.unlink(file)
 
         self.assertEqual(lp2.gettext("Hello World"), "Γειά σου Κόσμε")
+    
+    def test_parse_unsupported(self):
+        file = os.path.join(os.getcwd(), "unsupported.xml")
+        with open(file, 'w') as f:
+            f.write('<entry><original>Hello World</original><translated>Γειά σου Κόσμε</translated></entry>')
+        
+        lp = LanguagePack()
+        with self.assertRaises(TypeError):
+            lp.parse_file(file)
+        os.unlink(file)
 
 
 if __name__ == "__main__":

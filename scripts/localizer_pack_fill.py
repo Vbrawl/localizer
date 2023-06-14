@@ -40,6 +40,12 @@ tl = args.to_lang
 
 lp = LanguagePack()
 
+if lp.get_file_extension(lpf) is None:
+    print("Error: Unsupported file extension.")
+    print("Please select one of the following extensions: ")
+    print(''.join(map(lambda x: f"\t* {x}\n", lp.supported_file_types.keys())))
+    exit()
+
 if translator and qtranslator:
     print("Error: Cannot enable translator and quick-translator at the same time.")
     exit()
