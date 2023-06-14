@@ -20,6 +20,14 @@ localizer.FileHandler module
    :undoc-members:
    :show-inheritance:
 
+localizer.examples module
+-------------------------
+
+.. automodule:: localizer.examples
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 localizer.language\_pack module
 -------------------------------
 
