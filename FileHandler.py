@@ -20,6 +20,7 @@ class FileHandler:
 
         Args:
             file (str): The filepath/filename to the file which will hold the data. (The file is created if it doesn't exist).
+            
             texts (dict[str, str] | set[str]): A dictionary with key: value pairs where key is the `original text` and value is the `translated text`, or a set where each value is an `original text` where there is no translation for it.
 
         Raises:

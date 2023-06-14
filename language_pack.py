@@ -31,6 +31,7 @@ class LanguagePack:
 
         Args:
             extension (str): The extension of the file that the Handler can process (Example, .json, .csv).
+
             fhandler (type[FileHandler]): A reference to the class holding the static methods for parsing and exporting the files.
         """
         if not extension.startswith('.'):
@@ -83,6 +84,7 @@ class LanguagePack:
 
         Args:
             original (str): The original sentence.
+            
             translated (str): The translated sentence. Defaults to ''
         """
         if translated == '':

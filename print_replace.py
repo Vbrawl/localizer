@@ -12,8 +12,11 @@ def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', fi
 
     Args:
         sep (Optional[str], optional): The separator, a value that's placed between the values. Defaults to ' '.
-        end (Optional[str], optional): The ending value, a value that's placed at the end of the whole value list. Defaults to '\n'.
+
+        end (Optional[str], optional): The ending value, a value that's placed at the end of the whole value list. Defaults to '\\\\n'.
+
         file (Optional[IO], optional): The file object in which to write the buffer, None is replaced with STDOUT. Defaults to None.
+
         flush (bool, optional): Wether to flush the buffer or not. Defaults to False.
 
     Raises:
