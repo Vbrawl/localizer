@@ -59,6 +59,16 @@ def print(*values: object, sep:Optional[str] = ' ', end:Optional[str] = '\n', fi
 
 _input=input
 def input(_prompt:object = "") -> str:
+    """An emulated version of the default `input`.
+    Allows `localizer` to intercept the `_prompt` and provide
+    an easy way to translate it to different languages.
+
+    Args:
+        _prompt (object, optional): Any object that implements `repr` or `str`. Defaults to "".
+
+    Returns:
+        str: A string that's typed to the console (the string is read by the default input function).
+    """
     if isinstance(_prompt, str):
         _prompt = GLOBAL_LANGUAGE_PACK.gettext(_prompt)
     return _input(_prompt)
