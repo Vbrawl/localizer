@@ -1,34 +1,18 @@
-import argparse, os, translators as ts
+import argparse, os
 from localizer.language_pack import LanguagePack
+from typing import Optional, Iterator
 
-def translate_text(query_text:str, from_language:str="auto", to_language:str="en", translators:list[str]=["deepl", "google", "bing"], tries=5) -> str:
-    def count_spaces(text:str) -> int:
-        for i, v in enumerate(text, 1):
-            if v != ' ':
-                return i-1
-        return len(text)
-    start_spaces = count_spaces(query_text)
-    end_spaces = count_spaces(query_text[::-1])
-    query_text = query_text[start_spaces:-end_spaces]
-
-    for translator in translators:
-        for i in range(tries):
-            try:
-                return (' ' * start_spaces) + ts.translate_text(query_text=query_text, translator=translator, from_language = from_language, to_language = to_language) + (' ' * end_spaces) # type: ignore
-            except Exception:
-                pass
-    else:
-        return ""
-
-
-def get_translation(original:str, recommendation:str, prompt:str, qtranslator:bool = False):
-    if qtranslator:
-        return recommendation
-
+def get_translation(original:str, recommendation:str, prompt:str):
     translated = input(prompt.format(original = original, recommendation = (" (" + recommendation + ")" if recommendation else "")))
     if recommendation and not translated:
         translated = recommendation
     return translated
+
+def get_next(it:Iterator[set[str]]) -> Optional[str]:
+    try:
+        return next(it)
+    except StopIteration:
+        return None
 
 parser = argparse.ArgumentParser(description="Create a language pack for the Python package `Localizer`.", add_help=True, exit_on_error=False)
 parser.add_argument("language_pack_file", type=str, help="The language_pack file, this is going to be updated if it doesn't exist.")
@@ -48,6 +32,9 @@ fl = args.from_lang
 tl = args.to_lang
 
 lp = LanguagePack()
+lp.auto_translate = False
+lp.translate_from_language = fl
+lp.translate_to_language = tl
 
 if lp.get_file_extension(lpf) is None:
     print("Error: Unsupported file extension.")
@@ -79,34 +66,37 @@ if efs:
         except TypeError or PermissionError:
             print(f"Error: external_file({f}) doesn't exist. Ignoring...")
 
-if lp.new_texts:
-    print("First, please translate all the new_texts that were found:")
-    new_texts = set(lp.new_texts)
-    for nt in new_texts:
-        recommendation = translate_text(nt, from_language=fl, to_language=tl) if (translator or qtranslator) else ""
-        translated = get_translation(nt, recommendation, "{original}{recommendation} => ", qtranslator)
-        if translated:
-            lp.add_translation(nt, translated)
+it = iter(lp.new_texts)
+prompt = "{original}{recommendation} => "
+iterator_ended = False
+answer = False
 
-yes_NO = input("Would you like to add more texts? [yes/NO]: ")
-print("When translation is empty, the original text enters the new_texts.")
-print("Input an empty `original text` to finish adding texts.")
-if yes_NO and yes_NO.upper() == "YES":
-    cont = True
-    while cont:
-        original = input("Original Text: ")
+while not iterator_ended or answer:
+    if not iterator_ended:
+        original = get_next(it)
+    else:
+        original = input("Original text: ")
+    
+    if original:
+        recommendation = lp.translate(original, auto_add=False) if translator else None
+        translated = get_translation(original, recommendation, prompt) if not qtranslator else None
 
-        if original:
-            recommendation = translate_text(original, from_language=fl, to_language=tl) if (translator or qtranslator) else ""
-            translated = get_translation(original, recommendation, "Translated Text{recommendation}:", qtranslator)
+        lp.add_translation(original, translated)
+    elif not original and not iterator_ended:
+        iterator_ended = True
+        yes_NO = input("Would you like to add more texts? [yes/NO]: ")
+        if yes_NO and yes_NO.upper() == "YES":
+            print("To stop adding more texts, enter a blank original text.")
+            print("You can add a new text by not providing a translation for an original text.")
+            prompt = "Translated Text{recommendation}: "
+            answer = True
+    else:
+        answer = False
 
-            if translated:
-                lp.add_translation(original, translated)
-            else:
-                lp.new_texts.add(original)
-        else:
-            cont = False
-
+if qtranslator:
+    print("Translating All New Texts...")
+    lp.translate_all()
+    print("Translation Finished.")
 print("Saving Changes...")
 lp.export_file(lpf)
 print("Changes Saved.")
