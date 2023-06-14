@@ -1,16 +1,71 @@
 from typing import Optional
+import translators as ts
 from localizer.FileHandler import FileHandler
 from localizer.supported_file_types import FILE_TYPES
+import asyncio
+
+def count_spaces(text:str) -> int:
+            for i, v in enumerate(text, 1):
+                if v != ' ':
+                    return i-1
+            return 0
+
 
 class LanguagePack:
     def __init__(self):
         self.o_t:dict[str, str] = dict()                                    # original: translated
         self.new_texts:set[str] = set()
         self.supported_file_types:dict[str, type[FileHandler]] = dict()     # extension: FileHandler
+        self.translate_from_language = "auto"
+        self.translate_to_language = "en"
+        self.translators = ["deepl", "google", "bing"]
+        self.translator_tries = 5
+        self.auto_translate = True
 
         for ext, fhandler in FILE_TYPES.items():
             self.set_file_extension(ext, fhandler)
     
+    def translate_all(self):
+        loop = asyncio.new_event_loop()
+        results:dict[str, asyncio.Future[str]] = {}
+        for original in self.new_texts:
+            #                                                              query_text, to_language, from_language, translators, tries, auto_add
+            results[original] = loop.run_in_executor(None, self.translate, original,   None,        None,          None,        None,  False)
+
+        gather = asyncio.gather(*results.values(), return_exceptions=True)
+        loop.run_until_complete(gather)
+        for original in results.keys():
+            translated = results[original].result()
+            self.add_translation(original, translated)
+
+    def translate(self, query_text:str, to_language:Optional[str] = None, from_language:Optional[str] = None, translators:Optional[list[str]] = None, tries:Optional[int] = None, auto_add:bool = True) -> Optional[str]:
+        if not to_language:
+            to_language = self.translate_to_language
+        if not from_language:
+            from_language = self.translate_from_language
+        if not translators:
+            translators = self.translators
+        if not tries:
+            tries = self.translator_tries
+
+        start_spaces = count_spaces(query_text)
+        end_spaces = count_spaces(query_text[::-1])
+        query_text = query_text[start_spaces:]
+
+        if end_spaces != 0:
+            query_text = query_text[:-end_spaces]
+
+        for translator in translators:
+            for i in range(tries):
+                try:
+                    translated = (' ' * start_spaces) + ts.translate_text(query_text=query_text, translator=translator, from_language = from_language, to_language = to_language) + (' ' * end_spaces) # type: ignore
+                    if auto_add:
+                        self.add_translation(query_text, translated)
+                    else:
+                        return translated
+                except Exception:
+                    pass
+
     def get_file_extension(self, filename:str) -> Optional[str]:
         """Finds and returns the extension of the file ONLY if that extension is supported.
 
@@ -78,23 +133,24 @@ class LanguagePack:
             self.add_translation(o, t)
 
     
-    def add_translation(self, original:str, translated:str = '') -> None:
+    def add_translation(self, original:str, translated:Optional[str] = None) -> None:
         """Add a translation for a sentence in the language pack.
         If the translated text is empty, original is added to new_texts.
 
         Args:
             original (str): The original sentence.
             
-            translated (str): The translated sentence. Defaults to ''
+            translated (Optional[str], optional): The translated sentence. Defaults to None
         """
-        if translated == '':
-            self.new_texts.add(original)
-        else:
+        if translated:
             self.o_t[original] = translated
             try:
                 self.new_texts.remove(original)
             except KeyError:
                 pass # original doesn't exist anyway.
+        else:
+            self.new_texts.add(original)
+            if self.auto_translate: self.translate(original)
     
     def gettext(self, text:str) -> str:
         """Get the translation of `text` if it exists,
