@@ -1,4 +1,2 @@
 [ ] Add auto translate in the language pack. (Asynchronously!)
-[ ] Add documentation in input function.
-[ ] Add test cases for input function.
 [ ] Fix the translate function to count the spaces.
