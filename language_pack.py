@@ -26,6 +26,10 @@ class LanguagePack:
             self.set_file_extension(ext, fhandler)
     
     def translate_all(self):
+        """Asynchronously translate all `new_texts` and store them in the pack.
+
+        NOTE: The options are the LanguagePack's attributes `self.translat*`
+        """
         loop = asyncio.new_event_loop()
         results:dict[str, asyncio.Future[str]] = {}
         for original in self.new_texts:
@@ -39,6 +43,20 @@ class LanguagePack:
             self.add_translation(original, translated)
 
     def translate(self, query_text:str, to_language:Optional[str] = None, from_language:Optional[str] = None, translators:Optional[list[str]] = None, tries:Optional[int] = None, auto_add:bool = True) -> Optional[str]:
+        """Translate `query_text` from `from_language` to `to_language` using one of the `translators` (starting from the first and using the others as fallbacks).
+        You also have the option to automatically add the translation to the pack (if the translation succeeds) using `auto_add=True`
+
+        Args:
+            query_text (str): The original text to translate.
+            to_language (Optional[str], optional): The code of the language for the translated text. Defaults to None.
+            from_language (Optional[str], optional): The code of the language for the original text (or `auto`). Defaults to None.
+            translators (Optional[list[str]], optional): A list of translators to use (first is primary and the others are fallbacks). Defaults to None.
+            tries (Optional[int], optional): How many tries before going to the next translator. Defaults to None.
+            auto_add (bool, optional): Wether to add the translation to the pack or return it to the program. Defaults to True.
+
+        Returns:
+            Optional[str]: If `auto_add` is True the return value is None, if `auto_add` is False the return value is the translated text.
+        """
         if not to_language:
             to_language = self.translate_to_language
         if not from_language:
