@@ -2,10 +2,19 @@ import argparse, os, translators as ts
 from localizer.language_pack import LanguagePack
 
 def translate_text(query_text:str, from_language:str="auto", to_language:str="en", translators:list[str]=["deepl", "google", "bing"], tries=5) -> str:
+    def count_spaces(text:str) -> int:
+        for i, v in enumerate(text, 1):
+            if v != ' ':
+                return i-1
+        return len(text)
+    start_spaces = count_spaces(query_text)
+    end_spaces = count_spaces(query_text[::-1])
+    query_text = query_text[start_spaces:-end_spaces]
+
     for translator in translators:
         for i in range(tries):
             try:
-                return ts.translate_text(query_text=query_text, translator=translator, from_language = from_language, to_language = to_language) # type: ignore
+                return (' ' * start_spaces) + ts.translate_text(query_text=query_text, translator=translator, from_language = from_language, to_language = to_language) + (' ' * end_spaces) # type: ignore
             except Exception:
                 pass
     else:
@@ -72,7 +81,8 @@ if efs:
 
 if lp.new_texts:
     print("First, please translate all the new_texts that were found:")
-    for nt in lp.new_texts:
+    new_texts = set(lp.new_texts)
+    for nt in new_texts:
         recommendation = translate_text(nt, from_language=fl, to_language=tl) if (translator or qtranslator) else ""
         translated = get_translation(nt, recommendation, "{original}{recommendation} => ", qtranslator)
         if translated:
