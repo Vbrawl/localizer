@@ -2,13 +2,13 @@ import argparse, os
 from localizer.language_pack import LanguagePack
 from typing import Optional, Iterator
 
-def get_translation(original:str, recommendation:str, prompt:str):
+def get_translation(original:str, recommendation:Optional[str], prompt:str):
     translated = input(prompt.format(original = original, recommendation = (" (" + recommendation + ")" if recommendation else "")))
     if recommendation and not translated:
         translated = recommendation
     return translated
 
-def get_next(it:Iterator[set[str]]) -> Optional[str]:
+def get_next(it:Iterator[str]) -> Optional[str]:
     try:
         return next(it)
     except StopIteration:
