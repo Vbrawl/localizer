@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 
 [project]
-name = "Localizer"
+name = "perfect_localizer"
 version = "1.3"
 authors = [
     {name="Vbrawl", email="konstantosjim@gmail.com"},
@@ -18,6 +18,8 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[project.scripts]
+localizer_pack_fill = "localizer.scripts.localizer_pack_fill.py:main"
 
 [project.urls]
 "Homepage" = "https://github.com/Vbrawl/localizer"
